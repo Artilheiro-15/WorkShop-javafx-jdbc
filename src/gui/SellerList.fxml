@@ -35,8 +35,12 @@
             <TableColumn fx:id="tableColumnREMOVE" prefWidth="75.0">
                <columns>
                   <TableColumn fx:id="tableColumnBirthDate" prefWidth="75.0" text="Birth Date" />
-                  <TableColumn fx:id="tableColumnBaseSalary" prefWidth="75.0" text="Base Salary" />
                </columns></TableColumn>
+            <TableColumn prefWidth="75.0">
+               <columns>
+                  <TableColumn fx:id="tableColumnBaseSalary" prefWidth="75.0" text="Base Salary" />
+               </columns>
+            </TableColumn>
         </columns>
       </TableView>
    </children>
