@@ -46,19 +46,16 @@ public class SellerListController implements Initializable, DataChangeListener {
 
 	@FXML
 	private TableColumn<Seller, String> tableColumnName;
-	
-	
+
 	@FXML
 	private TableColumn<Seller, String> tableColumnEmail;
-	
 	
 	@FXML
 	private TableColumn<Seller, Date> tableColumnBirthDate;
 	
-	
 	@FXML
 	private TableColumn<Seller, Double> tableColumnBaseSalary;
-
+	
 	@FXML
 	private TableColumn<Seller, Seller> tableColumnEDIT;
 
@@ -89,17 +86,14 @@ public class SellerListController implements Initializable, DataChangeListener {
 	private void initializeNodes() {
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		
 		tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-
 		tableColumnBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
 		Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
-
 		tableColumnBaseSalary.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
 		Utils.formatTableColumnDouble(tableColumnBaseSalary, 2);
 
-
 		Stage stage = (Stage) Main.getMainScene().getWindow();
+		tableViewSeller.prefHeightProperty().bind(stage.heightProperty());
 	}
 
 	public void updateTableView() {
@@ -122,7 +116,6 @@ public class SellerListController implements Initializable, DataChangeListener {
 			controller.setSeller(obj);
 			controller.setServices(new SellerService(), new DepartmentService());
 			controller.loadAssociatedObjects();
-			
 			controller.subscribeDataChangeListener(this);
 			controller.updateFormData();
 
@@ -161,7 +154,6 @@ public class SellerListController implements Initializable, DataChangeListener {
 						event -> createDialogForm(obj, "/gui/SellerForm.fxml", Utils.currentStage(event)));
 			}
 		});
-
 	}
 
 	private void initRemoveButtons() {
@@ -192,11 +184,10 @@ public class SellerListController implements Initializable, DataChangeListener {
 			try {
 				service.remove(obj);
 				updateTableView();
-			} catch (DbIntegrityException e) {
-				Alerts.showAlert("Error removing objct", null, e.getMessage(), AlertType.ERROR);
+			}
+			catch (DbIntegrityException e) {
+				Alerts.showAlert("Error removing object", null, e.getMessage(), AlertType.ERROR);
 			}
 		}
-
 	}
-
 }
