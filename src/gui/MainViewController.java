@@ -32,7 +32,7 @@ public class MainViewController implements Initializable {
 
 	@FXML
 	public void onMenuItemSellerAction() {
-		loadView("/gui/SellerList.fxml", (SellerListController controller) -> {
+		loadView("SellerList.fxml", (SellerListController controller) -> {
 			controller.setSellerService(new SellerService());
 			controller.updateTableView();
 		});
@@ -40,7 +40,7 @@ public class MainViewController implements Initializable {
 
 	@FXML
 	public void onMenuItemDepartmentAction() {
-		loadView("/gui/DepartmentList.fxml", (DepartmentListController controller) -> {
+		loadView("DepartmentList.fxml", (DepartmentListController controller) -> {
 			controller.setDepartmentService(new DepartmentService());
 			controller.updateTableView();
 		});
@@ -48,7 +48,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemAboutAction() {
-		loadView("/gui/About.fxml", x -> {});
+		loadView("About.fxml", x -> {});
 	}
 	
 	@Override
